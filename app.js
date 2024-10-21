@@ -57,12 +57,12 @@ Exercise 4
 
 Solve Exercise 4 here:
 */
-let starterOpt = []
-for(let starterChoice of pokemon.starter) {
-    if (pokemon.includes(starter))
-        starterOpt.push(starterChoice)
-}
-game.party.push(starterChoice)
+// let starterOpt = []
+// for(let starterChoice of pokemon.starter) {
+//     if (pokemon.includes(starter))
+//         starterOpt.push(starterChoice)
+// }
+game.party.push(pokemon[0])
 
 /*
 Exercise 5
@@ -75,6 +75,7 @@ Solve Exercise 5 here:
 
 
 
+game.party.push(pokemon[150],pokemon[58],pokemon[144])
 
 
 
@@ -92,7 +93,7 @@ for(let gym of game.gyms) {
         gym.completed = true;
     }
 }
-// console.log(game.gyms)
+console.log(game.gyms)
 
 /*
 Exercise 7
@@ -110,7 +111,7 @@ More Hints: The existing starter Pokemon will be *replaced* in your party with t
 
 Solve Exercise 7 here:
 */
-
+game.party.splice(0,1,pokemon[1])
 
 /*
 Exercise 8
@@ -133,6 +134,12 @@ Exercise 9
 Solve Exercise 9 here:
 */
 
+pokemon.forEach((banana) => {
+  if (banana.starter === true) {
+    console.log(banana.name)
+  }
+})
+        
 
 /*
 Exercise 10
@@ -145,6 +152,9 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 
 Solve Exercise 10 here:
 */
+game.catchPokemon = function (pokemonObj) {
+  this.party.push(pokemonObj)
+}
 
 
 /*
@@ -159,6 +169,20 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 
 Solve Exercise 11 here:
 */
+
+game.catchPokemon = function (pokemonObj) {
+  this.party.push(pokemonObj)
+  this.items.forEach((banana) =>{
+    if (banana.name === "pokeball") {
+      banana.quantity -=1
+    }
+  })
+}
+game.catchPokemon(pokemon[47])
+console.log(game.items)
+
+
+
 
 
 /*
@@ -199,6 +223,22 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 Solve Exercise 13 here:
 */
 
+game.gymStatus = function (){
+ const gymTally = {completed: 0, incomplete: 0}
+  this.gyms.forEach((banana) =>{
+  if (banana.completed === true){
+gymTally.completed ++
+  } else {
+    gymTally.incomplete ++
+  }
+}) 
+console.log(gymTally)
+}
+
+game.gymStatus()
+
+
+
 
 /*
 Exercise 14
@@ -235,4 +275,4 @@ Exercise 16
 
 Solve Exercise 16 here:
 */
-
+console.log(game)
